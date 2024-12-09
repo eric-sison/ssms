@@ -36,11 +36,8 @@ export const LoginForm: FunctionComponent = () => {
     mutationKey: ["login_user"],
     mutationFn: async (credentials: z.infer<typeof LoginSchema>) => {
       const session = await appwrite.createEmailPasswordSession(credentials.email, credentials.password);
-
       const loggedInUser = await appwrite.get();
-
       setUser(loggedInUser);
-
       return session;
     },
 
